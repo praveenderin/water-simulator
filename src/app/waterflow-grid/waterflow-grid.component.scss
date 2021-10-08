@@ -1,0 +1,85 @@
+.grid-container {
+  display: flex;
+  margin: 3rem;
+  
+.grid {
+  margin-right: 6rem;
+}  
+.grid-row {
+  height: 50px;
+}
+  
+.grid-row:first-child {
+  display: none;
+}
+  
+.grid-row:first-child.show {
+  display: block;
+}
+  
+.grid-row:first-child .node {
+  background-color: var(--data-row-first-child);
+  outline: 1px solid var(--data-row-outline);
+  cursor: pointer;
+  pointer-events: unset;
+}
+ 
+.grid-row:first-child .node.hide {
+  background: none;
+  outline: none;
+  pointer-events: none;
+}
+  
+.grid-row:last-child .node {
+  outline: none;
+  background: none;
+}
+ 
+.blocks {
+  display: flex;
+  max-width: 120px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  user-select: none;
+}
+  
+.block-container {
+  width: 50px;
+  height: 50px;
+  background: var(--data-block-container);
+  margin-bottom: 20px;
+}
+.block-container:nth-child(odd) {
+  margin-right: 20px;
+}
+  
+.block {
+  background: var(--data-node-wall);
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+.block-container .moved {
+  cursor: not-allowed;
+}
+  
+.block.moved {
+  display: none;
+}
+  
+.node {
+  width: 50px;
+  height: 50px;
+  outline: 1px solid #888;
+  display: inline-block;
+  background: #F5F5F5;
+}
+
+.grid-row .node.node-visited {
+  background-color: var(--data-node-visited);
+}
+
+.node-wall {
+  background-color: var(--data-node-wall);
+}
+}

@@ -1,0 +1,30 @@
+<p>{{stepsMessage[currentStatus]}}</p>
+<div class="grid-container">
+  <div class="grid" (drop)="drop($event)" (dragover)="allowDrop($event)">
+    <div class="grid-row" [class.show]="isStartStimulation">
+      <div *ngFor="let cell of startRow" class="node" [class.node-visited]="cell.isVisited"
+        (click)="startNodeSelected(cell)"></div>
+    </div>
+      <div class="grid-row" *ngFor="let row of grid">
+        <div *ngFor="let cell of row.column" class="node" [attr.rowID]="row.rowID" [attr.columnID]="cell.columnID"
+          [class.node-wall]="cell.isBlocked" [class.node-visited]="cell.isVisited"></div>
+      </div>
+    <div class="grid-row" [class.show]="isStartStimulation">
+      <div *ngFor="let cell of endRow" class="node" [class.node-visited]="cell.isVisited"></div>
+    </div>
+  </div>
+  <div class="blocks">
+    <div *ngFor="let blockcell of blockCells; let i = index" class="block-container block-{{i}}">
+      <div class="block" (dragstart)="dragStart($event, blockcell)" [draggable]="!blockcell.isMoved" [attr.blockID]="blockcell.id"
+        [class.moved]="blockcell.isMoved">
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <button class="btn margin-right-10" (click)="goBack()">Back</button>
+  <button class="btn" *ngIf="isStartStimulation" (click)="ngOnInit()">Reset</button>
+  <button class="btn" *ngIf="!isStartStimulation"
+    [disabled]="totalNumberOfBlocksMoved !== appBroadcastService.noOfObstructions" (click)="startStimulation()">Start
+    Simulation</button>
+</div>

@@ -1,0 +1,9 @@
+<div id="water-simulator">
+  <h1 class="app-header">Waterflow Simulator</h1> 
+  <ng-container *ngIf="appBroadcastService.currentStep === 1">
+    <app-grid-creation></app-grid-creation>
+  </ng-container>
+  <ng-container *ngIf="appBroadcastService.currentStep === 2">
+    <app-waterflow-grid></app-waterflow-grid>
+  </ng-container>
+</div>
